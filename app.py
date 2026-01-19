@@ -2,20 +2,15 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# ----------------------------
-# Load trained model
-# ----------------------------
+
+
 model = joblib.load("model/trained_model.pkl")
 
-# ----------------------------
-# App Title
-# ----------------------------
 st.title("AI-Powered Medical Diagnosis System")
 st.subheader("Diabetes Prediction App")
 
-# ----------------------------
-# User Input Fields
-# ----------------------------
+
+
 st.write("Enter patient details:")
 
 pregnancies = st.number_input("Pregnancies", min_value=0, max_value=20, value=0)
@@ -27,9 +22,8 @@ bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0)
 dpf = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=2.5, value=0.5)
 age = st.number_input("Age", min_value=0, max_value=120, value=33)
 
-# ----------------------------
-# Predict Button
-# ----------------------------
+
+
 if st.button("Predict"):
     # Prepare input data for model
     input_data = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
@@ -40,6 +34,6 @@ if st.button("Predict"):
     
     # Display result
     if prediction[0] == 1:
-        st.error("⚠️ High Risk of Diabetes")
+        st.error(" High Risk of Diabetes")
     else:
-        st.success("✅ Low Risk of Diabetes")
+        st.success(" Low Risk of Diabetes")
